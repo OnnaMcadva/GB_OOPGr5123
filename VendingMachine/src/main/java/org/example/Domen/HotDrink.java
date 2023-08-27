@@ -1,0 +1,23 @@
+package org.example.Domen;
+
+public class HotDrink extends Product {
+
+    private int temperature;
+    public HotDrink(String name, int price, int temperature) {
+        super(name, price);
+        this.temperature = temperature;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString()+"; температура = " + this.temperature + " град.";
+    }
+
+    public int getTemperature() {
+        return temperature;
+    }
+
+    public void setTemperature(int temperature) {
+        this.temperature = temperature;
+    }
+}

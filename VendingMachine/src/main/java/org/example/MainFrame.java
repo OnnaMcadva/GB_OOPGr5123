@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
+import org.example.Services.VendingMachine;
 
 public class MainFrame extends JFrame {
 
@@ -12,31 +13,27 @@ public class MainFrame extends JFrame {
     final private Font mainFont = new Font("Segoe print", Font.BOLD, 18);
     JTextField tfFirstName, tfLastName;
 
-
+    JLabel lbAssort;
     JLabel lbWelcome;
 
     public void initialize() {
 
 
-        JLabel lbFirstName = new JLabel("First Name");
+        JLabel lbFirstName = new JLabel("Выбирайте продукт из ассортимента, пожалуйста");
         lbFirstName.setFont(mainFont);
 
         tfFirstName = new JTextField();
         tfFirstName.setFont(mainFont);
 
-
-        JLabel lbLastName = new JLabel("First Name");
+        JLabel lbLastName = new JLabel("А теперь накидайте монет");
         lbLastName.setFont(mainFont);
-
-
 
         tfLastName = new JTextField();
         tfLastName.setFont(mainFont);
 
 
-
         JPanel formPanel = new JPanel();
-        formPanel.setLayout(new GridLayout(4, 1, 5, 5));
+        formPanel.setLayout(new GridLayout(5, 1, 5, 5));
         formPanel.add(lbFirstName);
         formPanel.add(tfFirstName);
         formPanel.add(lbLastName);
@@ -46,9 +43,12 @@ public class MainFrame extends JFrame {
         lbWelcome = new JLabel();
         lbWelcome.setFont(mainFont);
 
+        lbAssort = new JLabel();
+        lbAssort.setFont(mainFont);
+        //lbAssort.();
 
 
-        JButton btnOk = new JButton("Ok");
+        JButton btnOk = new JButton("Купить товар");
         btnOk.setFont(mainFont);
         btnOk.addActionListener(new ActionListener() {
 
@@ -57,8 +57,10 @@ public class MainFrame extends JFrame {
 
 
                 String firstName = tfFirstName.getText();
-                String lastName = tfFirstName.getText();
-                lbWelcome.setText("Hello " + firstName + " " + lastName);
+                String lastName = tfLastName.getText();
+
+                lbWelcome.setText("Заберите " + firstName + " в окошке внизу " + lastName);
+
 
 
             }
@@ -66,7 +68,7 @@ public class MainFrame extends JFrame {
         });
 
 
-        JButton btnClear = new JButton("Clear");
+        JButton btnClear = new JButton("Очистить поля ввода");
         btnClear.setFont(mainFont);
         btnClear.addActionListener(new ActionListener() {
 
@@ -74,7 +76,7 @@ public class MainFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 tfFirstName.setText("");
-                tfFirstName.setText("");
+                tfLastName.setText("");
                 lbWelcome.setText("");
 
             }
@@ -110,16 +112,11 @@ public class MainFrame extends JFrame {
 
 
         setTitle("VendingMachines");
-        setSize(500, 600);
+        setSize(600, 600);
         setMaximumSize(new Dimension(300, 400));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
     }
 
-    public static void main(String[] arg)
-    {
-        MainFrame myFrame = new MainFrame();
-        myFrame.initialize();
-    }
 
 }

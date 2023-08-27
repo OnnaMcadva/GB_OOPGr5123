@@ -36,7 +36,7 @@ public class Product {
     @Override
     public String toString()
     {
-        return "Product: цена = "+ this.price + " руб.; название = "+this.name;
+        return "Product: " + this.name + "; цена = " + this.price + " руб.";
     }
 
 }

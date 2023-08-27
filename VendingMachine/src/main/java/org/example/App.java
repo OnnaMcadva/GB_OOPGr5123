@@ -14,14 +14,18 @@ public class App {
         List<Product> assort = new ArrayList<Product>();
 
         Product item1 = new Product("Lays", 100);
-        Product item2 = new Product("cola", 50);
+        Product item2 = new Product("Peanut", 50);
         Product item3 = new Bottle("Mineral water", 101, 1.5);
         Product item4 = new HotDrink("Coffee", 77, 70);
+        Product item5 = new HotDrink("Fresh ginger tea", 83, 66);
+        Product item6 = new HotDrink("Hot chocolate", 80, 60);
 
         assort.add(item1);
         assort.add(item2);
         assort.add(item3);
         assort.add(item4);
+        assort.add(item5);
+        assort.add(item6);
 
         Holder hold1 = new Holder(10, 10);
         CoinDispenser disp = new CoinDispenser(120);
@@ -32,6 +36,7 @@ public class App {
         {
             System.out.println(prod);
         }
+
         MainFrame myFrame = new MainFrame();
         myFrame.initialize();
     }

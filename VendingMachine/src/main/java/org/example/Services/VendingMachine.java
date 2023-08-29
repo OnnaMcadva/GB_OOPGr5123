@@ -9,12 +9,9 @@ public class VendingMachine {
     private CoinDispenser dispenser;
     private List<Product> productList;
 
-    public VendingMachine(Holder holder, CoinDispenser dispenser, List<Product> productList) {
-
-
-
+    public VendingMachine(Holder holder, List<Product> productList) {
         this.holder = holder;
-        this.dispenser = dispenser;
+        dispenser = new CoinDispenser();
         this.productList = productList;
     }
 

@@ -11,7 +11,7 @@ import org.example.Services.VendingMachine;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        List<Product> assort = new ArrayList<Product>();
+        List<Product> assort = new ArrayList<>();
 
         Product item1 = new Product("Lays", 100);
         Product item2 = new Product("Peanut", 50);
@@ -27,17 +27,16 @@ public class App {
         assort.add(item5);
         assort.add(item6);
 
-        Holder hold1 = new Holder(10, 10);
-        CoinDispenser disp = new CoinDispenser(120);
+        Holder hold = new Holder(10, 10);
 
-        VendingMachine venMach1 = new VendingMachine(hold1, disp, assort);
+        VendingMachine venMach = new VendingMachine(hold, assort);
 
-        for(Product prod: venMach1.getProductList())
+        for(Product prod: venMach.getProductList())
         {
             System.out.println(prod);
         }
 
-        MainFrame myFrame = new MainFrame();
-        myFrame.initialize();
+//        MainFrame myFrame = new MainFrame();
+//        myFrame.initialize();
     }
 }

@@ -1,36 +1,21 @@
 package org.example.Services;
 
 public class CoinDispenser {
-    private int nominal;
+    private int balance = 0;
 
-    public CoinDispenser(int nominal) {
-        this.nominal = nominal;
+    public int getBalance() {
+        return balance;
+    }
+    public void putCoin(int coinValue) {
+        balance += coinValue;
     }
 
-    public String toString(){
-        return "Номинал монеты равен " + nominal;
+    public void withdraw (int amount) {
+        balance -= amount;
     }
 
-
-
-    public int getSumm(int insertCoin, int outCoin){
-        int summCoin;
-        summCoin = insertCoin+outCoin;
-        return summCoin;
-    }
-    public int giveChahge(int summCoin, int price ) {
-        int change;
-        if (price < summCoin){
-            change = summCoin - price;
-        }
-        else if (price == summCoin) {
-            change = summCoin - price;
-        }
-        else change = 0;
-        return change;
+    public void purchase (int price) {
+        balance -= price;
     }
 
-    public boolean dispense(int price) {
-        return false;
-    }
 }

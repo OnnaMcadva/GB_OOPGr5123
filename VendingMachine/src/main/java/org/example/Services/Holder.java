@@ -9,7 +9,7 @@ public class Holder {
     private List<Place> places;
 
     public Holder(int xSize, int ySize){
-        places = new ArrayList<>(xSize*ySize);
+        places = new ArrayList<>(xSize * ySize);
         for(int x = 0; x < xSize; x++){
             for(int y = 0; y < ySize; y++){
                 places.add(new Place(x, y));

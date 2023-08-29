@@ -10,7 +10,7 @@ public class HotDrink extends Product {
 
     @Override
     public String toString() {
-        return super.toString()+"; температура = " + this.temperature + " град.";
+        return super.toString() + "; температура = " + temperature + " град.";
     }
 
     public int getTemperature() {

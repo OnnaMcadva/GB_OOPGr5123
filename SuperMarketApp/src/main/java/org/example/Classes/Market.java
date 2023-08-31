@@ -1,10 +1,14 @@
 package org.example.Classes;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ArrayList;
 
-import org.example.Interfaces.iActorBehaviour;
 
+import org.example.Interfaces.iActorBehaviour;
 import org.example.Interfaces.iMarketBehaviour;
 import org.example.Interfaces.iQueueBehaviour;
 
@@ -18,20 +22,26 @@ public class Market implements iMarketBehaviour, iQueueBehaviour {
 
     @Override
     public void acceptToMarket(iActorBehaviour actor) {
-        System.out.println(actor.getActor().getName() + " клиент пришел в магазин ");
+        String strAcceptToMarket = actor.getActor().getName() + " пришел в магазин";
+        System.out.println(strAcceptToMarket);
+        logActions(strAcceptToMarket);
         takeInQueue(actor);
     }
 
     @Override
     public void takeInQueue(iActorBehaviour actor) {
         this.queue.add(actor);
-        System.out.println(actor.getActor().getName() + " клиент добавлен в очередь ");
+        String strTakeInQueue = actor.getActor().getName() + " встал в очередь";
+        System.out.println(strTakeInQueue);
+        logActions(strTakeInQueue);
     }
 
     @Override
     public void releaseFromMarket(List<Actor> actors) {
         for (Actor actor : actors) {
-            System.out.println(actor.getName() + " клиент ушел из магазина ");
+            String strReleaseFromMarket = actor.getName() + " ушел из магазина";
+            System.out.println(strReleaseFromMarket);
+            logActions(strReleaseFromMarket);
             queue.remove(actor);
         }
 
@@ -49,7 +59,9 @@ public class Market implements iMarketBehaviour, iQueueBehaviour {
         for (iActorBehaviour actor : queue) {
             if (actor.isMakeOrder()) {
                 actor.setTakeOrder(true);
-                System.out.println(actor.getActor().getName() + " клиент получил свой заказ ");
+                String strGiveOrder = actor.getActor().getName() + " получил свой заказ";
+                System.out.println(strGiveOrder);
+                logActions(strGiveOrder);
             }
         }
 
@@ -61,7 +73,9 @@ public class Market implements iMarketBehaviour, iQueueBehaviour {
         for (iActorBehaviour actor : queue) {
             if (actor.isTakeOrder()) {
                 releaseActors.add(actor.getActor());
-                System.out.println(actor.getActor().getName() + " клиент ушел из очереди ");
+                String strReleaseFromQueue = actor.getActor().getName() + " ушел из очереди";
+                System.out.println(strReleaseFromQueue);
+                logActions(strReleaseFromQueue);
             }
         }
         releaseFromMarket(releaseActors);
@@ -72,11 +86,30 @@ public class Market implements iMarketBehaviour, iQueueBehaviour {
         for (iActorBehaviour actor : queue) {
             if (!actor.isMakeOrder()) {
                 actor.setMakeOrder(true);
-                System.out.println(actor.getActor().getName() + " клиент сделал заказ ");
-
+                String strTakeOrder = actor.getActor().getName() + " сделал заказ";
+                System.out.println(strTakeOrder);
+                logActions(strTakeOrder);
             }
         }
 
+    }
+
+    /**
+     * @apiNote Метод записывает действия класса в файл log.txt
+     * @param note текст действия
+     */
+    public void logActions(String note) {
+        String fileName = "log.txt";
+        LocalDateTime currentTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        String formattedTime = currentTime.format(formatter);
+        try (FileWriter fw = new FileWriter(fileName, true)) {
+            fw.write(formattedTime + " " + note + "\n");
+            //System.out.println("!");
+        } catch (
+                IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

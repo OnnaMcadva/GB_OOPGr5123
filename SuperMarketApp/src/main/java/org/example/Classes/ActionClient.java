@@ -1,12 +1,13 @@
 package org.example.Classes;
 
-public class SpecialClient extends Actor  {
+public class ActionClient extends Actor {
+    public static String nameOfAction;
+    private int idClient;
+    public static int numberOfParticipants;
 
-    private int idVIP;
-
-    public SpecialClient(String name, int id) {
+    public ActionClient(String name, int id) {
         super(name);
-        this.idVIP = id;
+        this.idClient = id;
     }
 
     public boolean isTakeOrder() {
@@ -40,13 +41,12 @@ public class SpecialClient extends Actor  {
         super.name = name;
     }
 
-    public int getIdVIP() {
-        return idVIP;
+    public int getIdClient() {
+        return idClient;
     }
 
-    public void setIdVIP(int idVIP) {
-        this.idVIP = idVIP;
+    public void setIdClient(int idClient) {
+        this.idClient = idClient;
     }
-
 
 }

@@ -5,19 +5,25 @@ import org.example.Classes.OrdinaryClient;
 import org.example.Classes.SpecialClient;
 import org.example.Classes.TaxInspector;
 import org.example.Interfaces.iActorBehaviour;
+import org.example.Classes.ActionClient;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Market magnit = new Market();
+        Market tesco = new Market();
 
-        iActorBehaviour client1 = new OrdinaryClient("boris");
-        iActorBehaviour client2 = new SpecialClient("prezident", 1);
+        iActorBehaviour client1 = new OrdinaryClient("Петя");
+        iActorBehaviour client2 = new SpecialClient("Петрович", 1);
         iActorBehaviour client3 = new TaxInspector();
+        ActionClient.nameOfAction = "";
+        ActionClient.numberOfParticipants = 13;
+        iActorBehaviour client4 = new ActionClient("Счастливчик", 13);
 
-        magnit.acceptToMarket(client1);
-        magnit.acceptToMarket(client2);
-        magnit.acceptToMarket(client3);
+        tesco.acceptToMarket(client1);
+        tesco.acceptToMarket(client2);
+        tesco.acceptToMarket(client3);
+        tesco.acceptToMarket(client4);
 
-        magnit.update();
+        tesco.update();
+
     }
 }

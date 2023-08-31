@@ -30,7 +30,7 @@ public class TaxInspector implements iActorBehaviour {
 
     @Override
     public void setTakeOrder(boolean take) {
-        isTakeOrder=take;
+        isTakeOrder = take;
     }
 
     @Override

@@ -31,10 +31,7 @@ public class StudentGroup implements Iterable<Student> {
 
     @Override
     public String toString() {
-        return "StudentGroup{" +
-                "group=" + group +
-                ", idGroup=" + idGroup +
-                '}';
+        return "StudentGroup. " + "Группа № " + idGroup + ": " + group;
     }
 
     // @Override

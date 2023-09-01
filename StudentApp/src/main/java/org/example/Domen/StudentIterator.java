@@ -13,7 +13,7 @@ public class StudentIterator implements Iterator<Student> {
 
     @Override
     public boolean hasNext() {
-        return counter<students.size();
+        return counter < students.size();
     }
     @Override
     public Student next() {
@@ -21,7 +21,6 @@ public class StudentIterator implements Iterator<Student> {
         {
             return null;
         }
-        //counter++;
         return students.get(counter++);
     }
 

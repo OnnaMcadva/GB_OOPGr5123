@@ -24,6 +24,13 @@ public class SpecialClient extends Actor  {
     public void setMakeOrder(boolean makeOrder) {
         super.isMakeOrder = makeOrder;
     }
+    public boolean isReturnOrder() {
+        return super.isReturnOrder;
+    }
+
+    public void setReturnOrder(boolean returnOrder) {
+        super.isReturnOrder = returnOrder;
+    }
 
     public Actor getActor()
     {

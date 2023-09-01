@@ -51,6 +51,13 @@ public class ActionClient extends Actor {
     public void setName(String name) {
         super.name = name;
     }
+    public boolean isReturnOrder() {
+        return super.isReturnOrder;
+    }
+    public void setReturnOrder(boolean returnOrder) {
+        super.isReturnOrder = returnOrder;
+    }
+
 
     public int getIdClient() {
         return idClient;

@@ -55,6 +55,19 @@ public class Market implements iMarketBehaviour, iQueueBehaviour {
     }
 
     @Override
+    public void takeOrder() {
+        for (iActorBehaviour actor : queue) {
+            if (!actor.isMakeOrder()) {
+                actor.setMakeOrder(true);
+                String strTakeOrder = actor.getActor().getName() + " сделал заказ";
+                System.out.println(strTakeOrder);
+                logActions(strTakeOrder);
+            }
+        }
+
+    }
+
+    @Override
     public void giveOrder() {
         for (iActorBehaviour actor : queue) {
             if (actor.isMakeOrder()) {
@@ -62,6 +75,19 @@ public class Market implements iMarketBehaviour, iQueueBehaviour {
                 String strGiveOrder = actor.getActor().getName() + " получил свой заказ";
                 System.out.println(strGiveOrder);
                 logActions(strGiveOrder);
+            }
+        }
+
+    }
+
+    //@Override
+    public void returnOrder() {
+        for (iActorBehaviour actor : queue) {
+            if (actor.isReturnOrder()) {
+                actor.setReturnOrder(true);
+                String strReturnOrder = actor.getActor().getName() + " вернул свой заказ";
+                System.out.println(strReturnOrder);
+                logActions(strReturnOrder);
             }
         }
 
@@ -81,18 +107,6 @@ public class Market implements iMarketBehaviour, iQueueBehaviour {
         releaseFromMarket(releaseActors);
     }
 
-    @Override
-    public void takeOrder() {
-        for (iActorBehaviour actor : queue) {
-            if (!actor.isMakeOrder()) {
-                actor.setMakeOrder(true);
-                String strTakeOrder = actor.getActor().getName() + " сделал заказ";
-                System.out.println(strTakeOrder);
-                logActions(strTakeOrder);
-            }
-        }
-
-    }
 
     /**
      * @apiNote Метод записывает действия класса в файл log.txt

@@ -1,8 +1,9 @@
 package org.example.Classes;
 
 import org.example.Interfaces.iActorBehaviour;
+import org.example.Interfaces.iReturnOrder;
 
-public abstract class Actor implements iActorBehaviour {
+public abstract class Actor implements iActorBehaviour, iReturnOrder {
 
     protected String name;
     protected boolean isMakeOrder;

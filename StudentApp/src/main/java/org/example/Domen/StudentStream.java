@@ -1,6 +1,8 @@
 package org.example.Domen;
 
+import java.util.Iterator;
 import java.util.List;
+import org.example.Domen.StudentGroup;
 
 /**
  * Класс StudentStream описывает поток групп студентов.
@@ -9,7 +11,7 @@ import java.util.List;
  * Добавлены в класс геттер и сеттер для номера потока (с названием потока не разобралась пока).
  * Переопределен метод toString().
  */
-public class StudentStream {
+public class StudentStream  {
     private List<StudentGroup> stream;
     private Integer idStream;
 

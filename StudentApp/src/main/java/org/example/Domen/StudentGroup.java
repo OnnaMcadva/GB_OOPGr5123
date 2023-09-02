@@ -4,7 +4,7 @@ package org.example.Domen;
 import java.util.Iterator;
 import java.util.List;
 
-public class StudentGroup implements Iterable<Student> {
+public class StudentGroup implements Iterable<Student>, Comparable<StudentGroup> {
     private List<Student> group;
     private Integer idGroup;
 
@@ -34,39 +34,24 @@ public class StudentGroup implements Iterable<Student> {
         return "StudentGroup. " + "Группа № " + idGroup + ": " + group;
     }
 
-    // @Override
-    // public Iterator<Student> iterator() {
-    //    return new Iterator<Student>() {
-
-    //     private int counter;
-
-    //     @Override
-    //     public boolean hasNext() {
-
-    //         if(counter<group.size())
-    //         {
-    //             return true;
-    //         }
-    //         else
-    //         {
-    //             return false;
-    //         }
-    //     }
-
-    //     @Override
-    //     public Student next() {
-    //         return group.get(counter++);
-    //     }
-
-    //    };
-
-    // }
-
     @Override
     public Iterator<Student> iterator() {
         return new StudentIterator(group);
-
     }
 
-
+    /**
+     * @apiNote Переопределение метода
+     * @param o the object to be compared.
+     * @return
+     */
+    @Override
+    public int compareTo(StudentGroup o) {
+        // System.out.println(group.size() + " - " + o.group.size());
+        if (group.size() == o.group.size())
+            return 0;
+        else if (group.size() > o.group.size())
+            return 1;
+        else
+            return -1;
+    }
 }

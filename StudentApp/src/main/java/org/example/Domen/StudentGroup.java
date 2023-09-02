@@ -31,7 +31,7 @@ public class StudentGroup implements Iterable<Student>, Comparable<StudentGroup>
 
     @Override
     public String toString() {
-        return "StudentGroup. " + "Группа № " + idGroup + ": " + group;
+        return "StudentGroup. " + "Группа № " + idGroup + ", количество студентов - " + group.size() + ": " + group;
     }
 
     @Override

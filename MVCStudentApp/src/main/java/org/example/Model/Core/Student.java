@@ -18,6 +18,6 @@ public class Student extends Person  {
 
     @Override
     public String toString() {
-        return "Students [age=" + super.getAge() + ", name=" + super.getName() + ", id=" + id + "]";
+        return "Студент: " + super.getName() + ", возраст " + super.getAge() + ", id: " + id;
     }
 }

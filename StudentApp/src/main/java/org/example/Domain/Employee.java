@@ -1,4 +1,4 @@
-package org.example.Domen;
+package org.example.Domain;
 
 public class Employee extends Person{
     private String special;

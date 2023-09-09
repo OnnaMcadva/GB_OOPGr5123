@@ -1,4 +1,4 @@
-package org.example.Domen;
+package org.example.Domain;
 
 public abstract class Person {
     private String name;

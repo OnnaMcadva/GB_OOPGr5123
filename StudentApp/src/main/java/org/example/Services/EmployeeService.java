@@ -3,9 +3,8 @@ package org.example.Services;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.example.Domen.Employee;
-import org.example.Domen.PersonComparator;
-import org.example.Domen.Student;
+import org.example.Domain.Employee;
+import org.example.Domain.PersonComparator;
 
 public class EmployeeService implements iPersonService<Employee> {
 

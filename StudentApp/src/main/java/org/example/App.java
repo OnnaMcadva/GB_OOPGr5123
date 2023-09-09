@@ -1,16 +1,16 @@
 package org.example;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-import org.example.Domen.Student;
-import org.example.Domen.StudentGroup;
-import org.example.Domen.StudentStream;
-
+import org.example.Domain.Student;
+import org.example.Domain.StudentGroup;
+import org.example.Domain.StudentStream;
+import org.example.Services.PersonPrintSortedToNameServices;
+import org.example.Services.StudentService;
+import org.example.Services.TeacherService;
 import org.example.Controllers.AccountController;
-import org.example.Domen.PersonComparator;
-import org.example.Domen.Teacher;
+import org.example.Domain.Teacher;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -34,85 +34,125 @@ public class App {
         List<Student> listStud5127 = new ArrayList<Student>();
         listStud5127.add(s1);
 
+        Teacher t1 = new Teacher("Галина", 31, "Ассистент");
+        Teacher t2 = new Teacher("Татьяна", 41, "Доцент");
+        Teacher t3 = new Teacher("Афанасий", 57, "Профессор");
+
+        List<Teacher> listTeach = new ArrayList<Teacher>();
+        listTeach.add(t1);
+        listTeach.add(t2);
+        listTeach.add(t3);
+
+        StudentService studentService = new StudentService();
+        studentService.create("Артем", 25);
+        studentService.create("Илья", 21);
+        studentService.create("Сергей", 22);
+        studentService.create("Онна",  26);
+        studentService.create("Настя",  24);
+        studentService.create("Катя", 23);
+        studentService.create("Cartoon Head", 27);
+
+        TeacherService teacherServices = new TeacherService();
+        teacherServices.create("Галина", 31);
+        teacherServices.create("Татьяна", 41);
+        teacherServices.create("Афанасий", 57);
+
+        PersonPrintSortedToNameServices printSortedToNameServices = new PersonPrintSortedToNameServices();
+
         System.out.println();
         System.out.println("*           * Список групп *           *");
         System.out.println();
 
-        StudentGroup group5123 = new StudentGroup(listStud5123, 5123);
-        System.out.println(group5123);
-
-        StudentGroup group5125 = new StudentGroup(listStud5125, 5125);
-        System.out.println(group5125);
-
-        StudentGroup group5127 = new StudentGroup(listStud5127, 5127);
-        System.out.println(group5127);
+//        StudentGroup group5123 = new StudentGroup(listStud5123, 5123);
+//        System.out.println(group5123);
+//
+//        StudentGroup group5125 = new StudentGroup(listStud5125, 5125);
+//        System.out.println(group5125);
+//
+//        StudentGroup group5127 = new StudentGroup(listStud5127, 5127);
+//        System.out.println(group5127);
 
         System.out.println();
         System.out.println("~~~~~~~~~~~~~~~ Список потока ~~~~~~~~~~~~~~~~~~~");
         System.out.println();
 
-        List<StudentGroup> listGroup1 = new ArrayList<StudentGroup>();
-        listGroup1.add(group5123);
-        listGroup1.add(group5125);
-        listGroup1.add(group5127);
+//        List<StudentGroup> listGroup1 = new ArrayList<StudentGroup>();
+//        listGroup1.add(group5123);
+//        listGroup1.add(group5125);
+//        listGroup1.add(group5127);
 
-        StudentStream stream1 = new StudentStream(listGroup1, 1);
-        System.out.println(stream1);
+//        StudentStream stream1 = new StudentStream(listGroup1, 1);
+//        System.out.println(stream1);
 
         System.out.println();
         System.out.println("-------------- Список потока по группам ------------------");
         System.out.println();
 
-        printGroups(stream1);
+//        printGroups(stream1);
 
         System.out.println();
         System.out.println("=============== Список студентов по группам ==================");
         System.out.println();
 
-        printStudents(group5123);
-        printStudents(group5125);
-        printStudents(group5127);
+//        printStudents(group5123);
+//        printStudents(group5125);
+//        printStudents(group5127);
 
         System.out.println();
         System.out.println("*************** Сортировка в группе по возрасту *****************");
         System.out.println();
 
-        Collections.sort(group5125.getGroup());
-        printStudents(group5125);
+//        Collections.sort(group5125.getGroup());
+//        printStudents(group5125);
 
         System.out.println();
         System.out.println("*      * Сортировка в потоке по количеству студентов в группе *     *");
         System.out.println();
 
-        Collections.sort(stream1.getStream());
-        printGroups(stream1);
+//        Collections.sort(stream1.getStream());
+//        printGroups(stream1);
 
         System.out.println();
         System.out.println("*      * Сортировка в потоке по идентификатору группы *      *");
         System.out.println();
 
-        Collections.sort(stream1.getStream(), StudentGroup.compareById());
-        printGroups(stream1);
+//        Collections.sort(stream1.getStream(), StudentGroup.compareById());
+//        printGroups(stream1);
 
         System.out.println();
-        System.out.println("*      * Сортировка в ??????????????ификатору группы *      *");
+        System.out.println("*   *   * Список учителей *   *   *");
         System.out.println();
 
-        Teacher t1 = new Teacher("Галина", 55, "Docent");
-        Teacher t2 = new Teacher("Татьяна", 57, "Docent");
+        for(Teacher tchr : listTeach)
+        {
+            System.out.println(tchr);
+        }
 
-        System.out.println(new PersonComparator<Student>().compare(s1, s3));
+        System.out.println();
+        System.out.println("Средний возраст учителей = " + AccountController.averageAge(teacherServices.getAll()));
+        System.out.println();
 
-        // AccountController controller = new AccountController();
-        // controller.paySalary(t1, 50000);
-        // controller.paySalary(s1, 50000);
+        System.out.println();
+        System.out.println(" +++++++++++++ Список учителей по алфавиту+++++++++++");
+        System.out.println();
+        printSortedToNameServices.print(teacherServices.getAll());
 
-        AccountController.paySalary(t1, 50000);
+        System.out.println();
+        System.out.println(" +++++++++++++ Список студентов по алфавиту+++++++++++");
+        System.out.println();
+        printSortedToNameServices.print(studentService.getAll());
 
-        System.out.println(AccountController.averageAge(listStud5123));
+        //System.out.println(new PersonComparator<Student>().compare(s1, s3));
+        //AccountController controller = new AccountController();
+        //AccountController.paySalary(t1, 50000);
+        //System.out.println(AccountController.averageAge(listStud5123));
 
     }
-
+    /**
+     * @apiNote Метод выводит на печать номер потока и группы со студентами, каждую с новой строки
+     * @param stream список групп в потоке
+     * @see org.example.Domain.StudentStream
+     */
     private static void printGroups(StudentStream stream) {
         System.out.println("Поток № " + stream.getIdStream());
         for(StudentGroup std: stream.getStream())
@@ -124,7 +164,7 @@ public class App {
     /**
      * @apiNote Метод выводит на печать номер группы и студентов группы, каждого с новой строки
      * @param group список студентов
-     * @see org.example.Domen.StudentGroup
+     * @see org.example.Domain.StudentGroup
      */
     private static void printStudents(StudentGroup group) {
         System.out.println("Группа № " + group.getIdGroup());
@@ -133,4 +173,5 @@ public class App {
             System.out.println(std);
         }
     }
+
 }

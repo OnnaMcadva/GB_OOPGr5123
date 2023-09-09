@@ -1,4 +1,4 @@
-package org.example.Domen;
+package org.example.Domain;
 
 
 public class Student extends Person implements Comparable<Student> {

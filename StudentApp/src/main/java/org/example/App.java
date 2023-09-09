@@ -8,6 +8,10 @@ import org.example.Domen.Student;
 import org.example.Domen.StudentGroup;
 import org.example.Domen.StudentStream;
 
+import org.example.Controllers.AccountController;
+import org.example.Domen.PersonComparator;
+import org.example.Domen.Teacher;
+
 public class App {
     public static void main(String[] args) throws Exception {
         Student s1 = new Student("Артём", 25);
@@ -59,10 +63,7 @@ public class App {
         System.out.println("-------------- Список потока по группам ------------------");
         System.out.println();
 
-        for(StudentGroup std: stream1.getStream())
-        {
-            System.out.println(std);
-        }
+        printGroups(stream1);
 
         System.out.println();
         System.out.println("=============== Список студентов по группам ==================");
@@ -77,31 +78,48 @@ public class App {
         System.out.println();
 
         Collections.sort(group5125.getGroup());
-        for(Student std: group5125.getGroup())
-        {
-            System.out.println(std);
-        }
+        printStudents(group5125);
 
         System.out.println();
         System.out.println("*      * Сортировка в потоке по количеству студентов в группе *     *");
         System.out.println();
 
         Collections.sort(stream1.getStream());
-        for(StudentGroup std: stream1.getStream())
-        {
-            System.out.println(std);
-        }
+        printGroups(stream1);
 
         System.out.println();
         System.out.println("*      * Сортировка в потоке по идентификатору группы *      *");
         System.out.println();
 
+        Collections.sort(stream1.getStream(), StudentGroup.compareById());
+        printGroups(stream1);
 
+        System.out.println();
+        System.out.println("*      * Сортировка в ??????????????ификатору группы *      *");
+        System.out.println();
+
+        Teacher t1 = new Teacher("Галина", 55, "Docent");
+        Teacher t2 = new Teacher("Татьяна", 57, "Docent");
+
+        System.out.println(new PersonComparator<Student>().compare(s1, s3));
+
+        // AccountController controller = new AccountController();
+        // controller.paySalary(t1, 50000);
+        // controller.paySalary(s1, 50000);
+
+        AccountController.paySalary(t1, 50000);
+
+        System.out.println(AccountController.averageAge(listStud5123));
 
     }
 
-
-
+    private static void printGroups(StudentStream stream) {
+        System.out.println("Поток № " + stream.getIdStream());
+        for(StudentGroup std: stream.getStream())
+        {
+            System.out.println(std);
+        }
+    }
 
     /**
      * @apiNote Метод выводит на печать номер группы и студентов группы, каждого с новой строки

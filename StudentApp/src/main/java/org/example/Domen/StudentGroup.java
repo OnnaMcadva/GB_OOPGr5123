@@ -1,6 +1,7 @@
 package org.example.Domen;
 
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -48,10 +49,32 @@ public class StudentGroup implements Iterable<Student>, Comparable<StudentGroup>
     public int compareTo(StudentGroup o) {
         // System.out.println(group.size() + " - " + o.group.size());
         if (group.size() == o.group.size())
-            return 0;
+        {
+            if (getIdGroup() == o.getIdGroup())
+                return 0;
+            else if (getIdGroup() > o.getIdGroup())
+                return 1;
+            else
+                return -1;
+        }
+
         else if (group.size() > o.group.size())
             return 1;
         else
             return -1;
+    }
+    public static Comparator<StudentGroup> compareById() {
+        return new Comparator<StudentGroup>() {
+            @Override
+            public int compare(StudentGroup o1, StudentGroup o2) {
+                if (o1.getIdGroup() == o2.getIdGroup())
+                    return 0;
+                else if (o1.getIdGroup() > o2.getIdGroup())
+                    return 1;
+                else
+                    return -1;
+            }
+        };
+
     }
 }

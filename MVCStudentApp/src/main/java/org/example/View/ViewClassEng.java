@@ -3,15 +3,14 @@ package org.example.View;
 import java.util.List;
 import java.util.Scanner;
 
-import org.example.Controller.ControllerClass;
 import org.example.Controller.Interfaces.iGetView;
 import org.example.Model.Core.Student;
 
-public class ViewClass implements iGetView {
+public class ViewClassEng implements iGetView {
 
     public void printAllStudent(List<Student> students)
     {
-        System.out.println("----------- Список студентов -----------");
+        System.out.println("----------- Students list -----------");
         for(Student s : students)
         {
             System.out.println(s);
@@ -25,5 +24,4 @@ public class ViewClass implements iGetView {
         System.out.println(msg);
         return in.nextLine();
     }
-
 }

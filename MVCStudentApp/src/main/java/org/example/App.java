@@ -9,6 +9,7 @@ import org.example.Model.ModelClassFile;
 import org.example.Model.ModelClassList;
 import org.example.Model.Core.Student;
 import org.example.View.ViewClass;
+import org.example.View.ViewClassEng;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -36,13 +37,16 @@ public class App {
         //ModelClassList modelList = new ModelClassList(students);
         //ViewClass view = new ViewClass();
 
-        iGetModel modelList = fModel;//new ModelClassList(students);
-        iGetView view = new ViewClass();
+        iGetModel modelList = fModel; //new ModelClassList(students);
+        //iGetView view = new ViewClass();
+        iGetView viewEng = new ViewClassEng();
 
-        ControllerClass controller = new ControllerClass(modelList, view);
+        //ControllerClass controller = new ControllerClass(modelList, view);
+        ControllerClass controllerEng = new ControllerClass(modelList, viewEng);
 
         // controller.update();
-        controller.run();
+        //controller.run();
+        controllerEng.run();
 
 
     }

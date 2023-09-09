@@ -3,7 +3,7 @@ package org.example.Services;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.example.Domen.Place;
+import org.example.Domain.Place;
 
 public class Holder {
     private List<Place> places;

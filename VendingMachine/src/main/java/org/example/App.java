@@ -2,10 +2,9 @@ package org.example;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.example.Domen.Bottle;
-import org.example.Domen.HotDrink;
-import org.example.Domen.Product;
-import org.example.Services.CoinDispenser;
+import org.example.Domain.Bottle;
+import org.example.Domain.HotDrink;
+import org.example.Domain.Product;
 import org.example.Services.Holder;
 import org.example.Services.VendingMachine;
 

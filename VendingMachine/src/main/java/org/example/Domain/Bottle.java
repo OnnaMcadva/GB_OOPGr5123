@@ -1,4 +1,4 @@
-package org.example.Domen;
+package org.example.Domain;
 
 public class Bottle extends Product {
 

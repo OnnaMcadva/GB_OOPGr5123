@@ -2,7 +2,7 @@ package org.example.Services;
 
 import java.util.List;
 
-import org.example.Domen.Product;
+import org.example.Domain.Product;
 
 public class VendingMachine {
     private Holder holder;

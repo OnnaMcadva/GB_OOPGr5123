@@ -1,5 +1,8 @@
 package org.example;
 
+/*
+* Класс Калькулятор с конструктором операций для двух вводимых чисел.
+*/
 public class ComplexCalculator {
     private ComplexOperation operation;
     public ComplexCalculator(ComplexOperation operation) {

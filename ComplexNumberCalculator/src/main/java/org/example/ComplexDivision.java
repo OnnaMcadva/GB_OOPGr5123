@@ -1,6 +1,9 @@
 package org.example;
 
 public class ComplexDivision implements ComplexOperation {
+    /**
+     * Переопределение методов
+     */
     @Override
     public ComplexNumber execute(ComplexNumber num1, ComplexNumber num2) {
 

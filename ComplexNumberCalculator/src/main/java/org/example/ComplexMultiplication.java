@@ -1,6 +1,12 @@
 package org.example;
 
 public class ComplexMultiplication implements ComplexOperation {
+    /**
+     * Переопределение метода
+     * @param num1 певрое число
+     * @param num2 второе число
+     * @return возвращаются реальные и мнимые части результата умножения
+     */
     @Override
     public ComplexNumber execute(ComplexNumber num1, ComplexNumber num2) {
 

@@ -2,7 +2,10 @@ package org.example;
 
 public class ComplexDivision implements ComplexOperation {
     /**
-     * Переопределение методов
+     * Переопределение метода
+     * @param num1 певрое число
+     * @param num2 второе число
+     * @return возвращаются реальные и мнимые части результата сложения
      */
     @Override
     public ComplexNumber execute(ComplexNumber num1, ComplexNumber num2) {

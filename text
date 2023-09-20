@@ -1,0 +1,41 @@
+Анна, проверил вашу работу. В общем задание решено верно, но есть ряд недочетов. К контроллеру подключили только одну английскую viewшку и надо было подключить ModelClassMap к контроллеру. Делается это так:
+HashMap<Long, Student> studentHashMap = new HashMap<>();
+studentHashMap.put(1L, s1);
+studentHashMap.put(2L, s2);
+studentHashMap.put(3L, s3);
+studentHashMap.put(4L, s4);
+studentHashMap.put(5L, s5);
+studentHashMap.put(6L, s6);
+
+    iGetModel model = new ModelClassHash(studentHashMap);
+
+
+    ControllerClass controllerEng = new ControllerClass(model, viewEng);
+
+Класс ModelClassHash разработан неверно, правильный класс прикрепляю ниже:
+public class ModelClassHash implements iGetModel {
+private HashMap<Long, Student> studentHashMap;
+
+public ModelClassHash(HashMap<Long, Student> studentHashMap) {
+    this.studentHashMap = studentHashMap;
+}
+
+
+
+public HashMap<Long, Student> getStudentHashMap() {
+    return studentHashMap;
+}
+
+
+@Override
+public List<Student> getStudents() {
+    List<Student> StudList = new ArrayList<Student>();
+    for(Student s: studentHashMap.values()){
+        StudList.add(s);
+    }
+    return StudList;
+}
+
+}
+К сожалению вы выполнили только одно задание, так что должен поставить 3. Однако, я верю в вас, так что ставлю 4:).
+
